@@ -1,0 +1,36 @@
+@page
+@model TaxCalculatorModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5 mb-4">Tax Calculator</h1>
+    <form method="post">
+        <div class="mb-3">
+            <label for="postalCode" class="form-label">Postal Code:</label>
+            <input type="text" class="form-control" id="postalCode" name="PostalCode" required>
+        </div>
+        <div class="mb-3">
+            <label for="annualIncome" class="form-label">Annual Income:</label>
+            <input type="number" class="form-control" id="annualIncome" name="AnnualIncome" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Calculate Tax</button>
+    </form>
+   @if (Model.TaxAmount.HasValue)
+    {
+        <div class="mt-4">
+            <h4>Tax Calculation Result:</h4>
+            <p><strong>Postal Code:</strong> @Model.PostalCode</p>
+            <p><strong>Annual Income:</strong> @Model.AnnualIncome</p>
+            <p><strong>Tax Amount:</strong> @Model.TaxAmount</p>
+        </div>
+    }
+</div>
+</body>
+</html>
